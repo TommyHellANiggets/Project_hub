@@ -1,0 +1,219 @@
+:root {
+    --color1: #000000;
+    --color2: #e8e8e8;
+    --color3: #474747;
+    --color4: #0f0f0f;
+    --colorbtn: #006b5b;
+    --colorbtn2: #004856;
+    --color5: #ababab;
+    --color6: rgba(130, 99, 255, 0.593);
+    --color7: rgb(57, 38, 133);
+    --color8: rgba(130, 99, 255, 0.163);
+    --color9: #dddddd;
+    --color13: #060606;
+
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+    background-color: var(--color4);
+  }
+  
+::-webkit-scrollbar-thumb {
+    background-color: var(--color3);
+  }
+
+::placeholder {
+    color: var(--color2) !important;
+    font-size: 20px;
+}
+
+:-ms-input-placeholder { 
+    color: var(--color2);
+  }
+  
+::-ms-input-placeholder { 
+    color: var(--color2);
+}
+
+html, body {
+    background-color: var(--color1) !important;
+}
+
+.navbg {
+    background-color: var(--color13) !important;
+}
+
+.contentbg {
+    background-color: var(--color1) !important;
+}
+
+a {
+    text-decoration: none !important;
+    color: var(--color2) !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+p {
+    font-size: 24px;
+    color: var(--color5);
+}
+
+h1, h2, h3, h4, h5 {
+    color: var(--color2) !important;
+}
+
+.navbar {
+    background-color: var(--color1);
+}
+
+.navbar-brand {
+    color: var(--color2);
+}
+
+.carousel-item {
+    object-fit: cover;
+}
+
+ul>li>.dropdown-menu {
+    background-color: var(--color4);
+}
+
+button {
+    background-color: var(--color6);
+    padding: 10px 20px;
+    border-radius: 5px !important; 
+    border: none;
+}
+
+button:hover {
+    background-color: var(--color7) !important;
+    transform: scale(0.95, 0.95);
+    transition: transform 0.5s; 
+}
+
+.nav-link:hover {
+    color: var(--color7) !important;
+}
+
+.dropdown-item {
+    color: var(--color2) !important;
+    padding: 5px 10px !important;
+    font-size: 18px;
+}
+
+.dropdown-item:hover {
+    background-color: var(--color4) !important;
+    color: var(--color7) !important;
+}
+
+.separator {
+    padding: 0.1px;
+    background-color: var(--color3) !important;
+}
+
+.card {
+    background-color: var(--color4) !important;
+}
+
+.custom-bg {
+    background-color: var(--color4);
+    border-radius: 10px;
+}
+
+.text_double {
+    padding-bottom: 300px !important;
+}
+
+.form-control {
+    background-color: var(--color4) !important;
+    border: 2px solid var(--color3) !important;
+    color: var(--color2) !important;
+}
+
+.text-center {
+    padding: 0 100px;
+}
+
+.description {
+    font-size: 20px !important;
+}
+
+.separator-vertical {
+    padding: 10px 10px !important; 
+    background-color: var(--color4) !important;
+}
+
+.modal-content {
+    background-image: url('static/fearstofathom4.png');
+    background-size: cover;
+    border: 2px solid var(--color4) !important;
+
+}
+
+.lurking_text {
+    padding: 0 180px !important;
+}
+
+.modal-title {
+    margin: 0 auto;
+}
+
+.btnn {
+    background-color: rgba(245, 222, 179, 0) !important;
+}
+
+.btnn:hover {
+    background-color: var(--color8) !important;
+}
+
+.bi {
+    font-size: 1em;
+  }
+  
+.btn_lang {
+    background-color: var(--color7);
+}
+
+.btn_lang:hover {
+    background-color: var(--color8) !important;
+    color: var(--color7) !important;
+}
+
+.btn_mdl {
+    background-color: var(--color6) !important;
+    color: var(--color2) !important;
+}
+
+.btn_mdl:hover {
+    background-color: var(--color7) !important;
+}
+
+.p_main {
+    margin: 100px 0 !important;
+    color: var(--color9);
+}
+
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #090909f8;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid #3f007f;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 15px 0 rgba(63, 0, 127, 0.94); 
+    z-index: 999;
+}
+
+.floating-button:hover {
+    transition: transform 0.3s ease; 
+    transform: scale(0.95); 
+}

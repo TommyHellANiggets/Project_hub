@@ -1,0 +1,149 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Power Fuel{% endblock %}</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Подключение пользовательских стилей -->
+    <link href="{% static 'pf_style.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+    <div class="naver d-flex">
+        <!-- Лого и название -->
+        <a class="navbar-brand" href="{% url 'pf-home' %}">
+            <h3 style="font-weight: 600; font-size: 24px; letter-spacing: 1px; margin-top: -10px;">Power Fuel</h3>
+            <p style="font-weight: 400; font-size: 14px; letter-spacing: 3px; margin-top: -15px; margin-bottom: -5px; color: lightgray;">- be the best</p>
+        </a>
+        <div class="search-container">
+            <input type="text" id="inputField" class="search-input" placeholder="Искать на Power Fuel…" oninput="toggleClearButton()">
+            <span class="clear-icon" onclick="clearInputField()">&times;</span>
+        </div>
+        <!-- Кнопка для мобильных устройств (если нужно) -->
+        <button class="navbar-toggler" style="margin-left: 10px; background-color: #ffffff;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <!-- Главная -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pf-home' %}">
+                        <i class="bi bi-house biba"></i>
+                        <p class="nav-text">Главная</p>
+                    </a>
+                </li>
+                <!-- Каталог -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#catalog">
+                        <i class="bi bi-journal-text biba"></i>
+                        <p class="nav-text">Каталог</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">
+                        <i class="bi bi-book biba"></i>
+                        <p class="nav-text">О Нас</p>
+                    </a>
+                </li>
+                <!-- Профиль -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle nav-text" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person biba" style="margin-top: -20px; padding-left: 8px;"></i>
+                        {% block profile_link %}
+                            {% if user.is_authenticated %}
+                                Профиль
+                            {% else %}
+                                Войти
+                            {% endif %}
+                        {% endblock %}
+                    </a>
+                    <ul class="dropdown-menu" style="margin-top: 10px;" aria-labelledby="navbarDropdown">
+                        {% block profile_dropdown %}
+                            {% if user.is_authenticated %}
+                                <!-- Личный кабинет -->
+                                <li><a class="dropdown-item" href="{% url 'pf-profile' %}">Личный кабинет</a></li>
+                                <div class="dropdown-divider"></div> <!-- Горизонтальная линия -->
+                                <!-- Корзина -->
+                                <li><a class="dropdown-item" href="{% url 'pf-cart' %}">Корзина</a></li>
+                            {% else %}
+                                <!-- Войти -->
+                                <li><a class="dropdown-item" href="{% url 'pf-authorisation' %}">Войти</a></li>
+                                <!-- Регистрация -->
+                                <li><a class="dropdown-item" href="{% url 'pf-registration' %}">Регистрация</a></li>
+                            {% endif %}
+                        {% endblock %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid con-fl-bg pb-2">
+    <a href="{% url 'home' %}" class="floating-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M6.354 11.354a.5.5 0 0 0 0-.708L3.707 8.5l2.647-2.646a.5.5 0 0 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z"/>
+            <path fill-rule="evenodd" d="M3 8.5a.5.5 0 0 1 .5-.5h7.793a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+        Вернуться в хаб
+    </a>
+    <button onclick="scrollToTop()" id="scrollBtn" title="Вверх"><i class="bi bi-arrow-up-short" style="font-size: 30px"></i></button>
+    <div class="container con-bg pb-3">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h6>О нас</h6>
+                <p>Email: <a href="mailto:platonakulov@outlook.com">platonakulov@outlook.com</a></p>
+                <p>Phone: <a href="tel:+79001191820">+7 (900) 119-18-20</a></p>
+            </div>
+            <div class="social-links">
+                <h6>Соц. сети</h6> 
+                <a href="https://vk.com/example" target="_blank">VK</a>
+                <a href="https://t.me/example" target="_blank">Telegram</a>
+                <a href="https://www.youtube.com/example" target="_blank">YouTube</a>
+            </div>
+        </div>
+        <div class="footer-policy">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <!-- Другие ссылки на политику и т.д. -->
+        </div>
+        <div class="footer-info">
+            <p>&copy; 2023-2024 Power Fuel</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("scrollBtn").style.display = "block";
+    } else {
+        document.getElementById("scrollBtn").style.display = "none";
+    }
+}
+
+function scrollToTop() {
+    document.body.scrollTop = 0; // Для Safari
+    document.documentElement.scrollTop = 0; // Для Chrome, Firefox, IE и Opera
+}
+</script>
+<!-- Подключение Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

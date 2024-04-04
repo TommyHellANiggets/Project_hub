@@ -1,0 +1,21 @@
+{% extends 'pf_base.html' %}
+
+{% block title %}
+    Корзина - Power Fuel
+{% endblock %}
+
+{% block content %}
+    <h1>Корзина</h1>
+
+    {% if cart_items %}
+        <ul>
+            {% for item in cart_items %}
+                <li>
+                    {{ item.fuel.name }} - {{ item.quantity }} шт. - {{ item.total_price }} ₽
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Ваша корзина пуста</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,90 @@
+:root {
+    --color-blue: #3609b3;
+    --color-gray: #dfdfdf;
+    --color2: #178617;
+    --color-white: #f8f8f8;
+    --color-card: #0a31df42;
+    --color-find: #5a64ec;
+    --color-blue2: #470ee4;
+    --light: #dedede;
+
+
+
+}
+
+body {
+    background-image: url("/static/img/bc3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+
+
+.submit {
+    padding: 0 auto !important;
+}
+
+.card {
+    background-color: #a39bc4;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1) !; /* Добавляем тень */
+}
+
+.container {
+    padding-left: 30px;
+    padding-right: 30px;
+
+
+}
+
+.card {
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px; /* Ширина карточки */
+}
+
+.card-body {
+    padding: 30px; /* Расстояние между содержимым карточки и ее краями */
+}
+
+.form-control {
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #6e4aff43;
+    border: 1px solid #d1d1d1d8;
+}
+
+.form-control:focus {
+    background-color: #6e4aff43;
+}
+
+.submit {
+    margin-top: 20px; /* Добавляем отступ перед кнопкой */
+}
+
+.btn {
+    width: 100%; /* Делаем кнопку занимающей всю ширину доступной */
+}
+
+.bi-arrow-left-short {
+    width: 40px; /* Задаем фиксированную ширину иконке */
+    font-size: 24px;
+    font-weight: 900 !important;
+    margin-right: -20px; /* Сдвигаем иконку влево на половину ширины кнопки, чтобы выровнять ее в центре */
+    padding-right: 0; /* Убираем внешний отступ справа */
+    overflow: hidden; /* Скрываем все, что выходит за пределы этой ширины */
+}
+
+.btn.btncolor.active {
+    background-color: var(--color-blue2); /* Укажите желаемый цвет фона */
+    color: var(--color-white);
+}
+
+p, h1, h2, h3, h4, h5, h6, label, input, cus {
+}
+
+a {
+    color: #30f !important;
+}

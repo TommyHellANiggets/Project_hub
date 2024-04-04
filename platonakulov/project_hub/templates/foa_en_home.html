@@ -1,0 +1,283 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fears Of Alone</title>
+    <link rel="stylesheet" href="{% static 'foa_style.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-languages/1.0.0/languages.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        :root {
+            --color1: #000000;
+            --color2: #ffffff;
+            --color3: #474747;
+        }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg py-4 navbg">
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="mx-2">
+                <a class="navbar-brand" style="color: var(--color2); margin-right: 7rem; font-size: 28px;" href="#">Fears Of Alone</a>
+            </div>
+            <div class="d-inline mx-2">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Navigation toggle">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link" style="color: var(--color2); margin-left: 7rem; font-size: 20px;" href="#news">NEWS</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-nowrap" style="color: var(--color2); margin-left: 1rem; font-size: 20px;" href="#send-history">YOUR STORY</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" style="color: var(--color2); margin-left: 1rem; font-size: 20px;" href="#">SUPPORT</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="color: var(--color2); margin-left: 1rem; font-size: 20px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          GAME SERIES
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#lurking_in_the_darkness">Lurking in the Darkness</a></li>
+                          <div class="separator"></div>
+                          <li><a class="dropdown-item" href="demo.html">Demo Versions</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <div class="dropdown">
+                            <button class="btn_lang  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              <span class="lang-sm lang-lbl" lang="ru">EN</span>
+                            </button>
+                            <ul class="dropdown-menu" style="background-color: var(--color4);">
+                              <li><a class="dropdown-item" href="{% url 'foa-home' %}"><span class="lang-sm lang-lbl" lang="en"></span>EN</a></li>
+                            </ul>
+                        </div>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="separator"></div>
+    <div class="container-fluid py-3" style="background-color: var(--color1);">
+        <div class="container">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="static/fearstofathom1.png" class="d-block w-100" style="max-height: 500px; border-radius: 5px;" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p class="p_main">“Fears Of Alone” is a collection of psychological horror games inspired by real stories, with the addition of characters' insane dreams and phobias at a certain period of their lives.</p>
+                        <button type="button" class="button_play" style="font-size: 24px;">
+                            <a href="#collection">Catalog</a>
+                        </button>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="static/fearstofathom2.png" class="d-block w-100" style="max-height: 500px; border-radius: 5px;" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                                            <p class="p_main">Our project is the result of inspiration from the "Fears To Fathom" game series by the creator "Rayll." We strongly recommend purchasing and playing games from this creator.</p>
+                        <button type="button" class="button_play" style="font-size: 24px;">
+                            <a href="https://www.fearstofathom.com/">Fears To Fathom</a>
+                        </button>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="static/fearstofathom3.png" class="d-block w-100" style="max-height: 500px; border-radius: 5px;" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p class="p_main">Feel the atmosphere of horror games that won't let you breathe calmly. Download the free demo version of any part of "Fears Of Alone" right now and immerse yourself in the nightmares experienced by the main characters.</p>
+                        <button type="button" class="button_play" style="font-size: 24px;">
+                          <a href="#collection">Try Demo</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid navbg"><h1 class="text-center py-4">News</h1></div>
+    <div class="container-fluid contentbg py-2">
+        <div class="container" id="news">
+            <div class="row">
+                <div class="">
+                    <div class="row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                          <div class="card">
+                            <div class="card-body">
+                              <h3 class="card-title text-center">Title</h3>
+                              <p class="card-text text-center py-3">With additional text below as a natural transition to additional content.</p>
+                              <a href="#" class="btn btn_mdl d-flex justify-content-center">Read More...</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <div class="card">
+                            <div class="card-body">
+                              <h3 class="card-title text-center">Title</h3>
+                              <p class="card-text text-center py-3">With additional text below as a natural transition to additional content.</p>
+                              <a href="#" class="btn btn_mdl d-flex justify-content-center">Read More...</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                          <div class="card">
+                            <div class="card-body">
+                              <h3 class="card-title text-center">Title</h3>
+                              <p class="card-text text-center py-3">With additional text below as a natural transition to additional content.</p>
+                              <a href="#" class="btn btn_mdl d-flex justify-content-center">Read More...</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <div class="card">
+                            <div class="card-body">
+                              <h3 class="card-title text-center">Title</h3>
+                              <p class="card-text text-center py-3">With additional text below as a natural transition to additional content.</p>
+                              <a href="#" class="btn btn_mdl d-flex justify-content-center">Read More...</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid navbg" id="send-history"><h1 class="text-center py-4">Send Us Your Story</h1></div>
+      <div class="container-fluid contentbg py-3">
+        <div class="container custom-bg" id="history">
+            <form>
+                <h4 class="text-center py-3">Do you have a real story that we could use for our projects? Then tell us about it in this form. If your story impresses us, we will email you.</h4>
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <input type="text" class="form-control py-3" id="exampleInputName1" placeholder="Name">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <input type="email" class="form-control py-3" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                    </div>
+                    <div class="col-12 mb-3">
+                        <textarea class="form-control text_double" id="text" placeholder="Enter message text"></textarea>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end pb-3">
+                    <button type="submit" class="btn btn_mdl">Send</button>
+                </div>
+            </form>
+        </div>
+      </div>
+      <div class="container-fluid navbg"><h1 class="text-center py-4" id="collection">Fears Of Alone Horror Game Collection</h1></div>
+      <div class="container-fluid contentbg py-2">
+        <div class="container" style="background-image: url('static/fearstofathom4.png'); background-size: cover; border-radius: 5px 5px 0 0" id="lurking_in_the_darkness">
+          <div class="row">
+            <div class="col-12 text-center pt-5">
+              <h2>Lurking In The Darkness</h2>
+              <div class="lurking_text pt-3">
+                <p class="py-5">Two students went on a summer camping trip. It was a cozy place where kind people rested. However, over time, they began to notice something strange. You have to uncover the secrets of this forest and find out what happened that night. A frightening yet cozy adventure awaits you, where every rustle could be your last.</p>
+              </div>
+              <div class="col-12 pb-5">
+                <button type="button" class="btn_mdl" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Free Demo Version
+                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <div class="col-12 position-relative">
+                          <button type="button" class="btnn position-absolute end-0" data-bs-dismiss="modal" data-bs-theme="dark" aria-label="Close">
+                            <i class="bi bi-x-lg"></i>
+                          </button>
+                          <h1 class="modal-title fs-3 pt-4" id="exampleModalLabel">Free Demo Version</h1>
+                          <p class="py-4">You can download the free demo version of "Lurking In The Darkness" by clicking on the link below. Try the game and feel the atmosphere of our horror world.</p>
+                          <button type="button" class="btn btn_mdl">Download</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container" style="background-image: url('static/fearstofathom5.png'); background-size: cover; border-radius: 5px 5px 0 0">
+          <div class="row">
+            <div class="col-12 text-center pt-5">
+              <h2>The City Of Shadows</h2>
+              <div class="lurking_text pt-3">
+                <p class="py-5">In the city where shadows come alive and whispers of the past echo through the deserted streets, you find yourself trapped. Your only way out is to uncover the mysteries hidden in the city's heart. The shadows watch your every move. Will you escape the City of Shadows?</p>
+              </div>
+              <div class="col-12 pb-5">
+                <button type="button" class="btn_mdl" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                  Free Demo Version
+                </button>
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <div class="col-12 position-relative">
+                          <button type="button" class="btnn position-absolute end-0" data-bs-dismiss="modal" data-bs-theme="dark" aria-label="Close">
+                            <i class="bi bi-x-lg"></i>
+                          </button>
+                          <h1 class="modal-title fs-3 pt-4" id="exampleModalLabel2">Free Demo Version</h1>
+                          <p class="py-4">You can download the free demo version of "The City Of Shadows" by clicking on the link below. Try the game and feel the atmosphere of our horror world.</p>
+                          <button type="button" class="btn btn_mdl">Download</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container" style="background-image: url('static/fearstofathom6.png'); background-size: cover; border-radius: 5px 5px 0 0">
+          <div class="row">
+            <div class="col-12 text-center pt-5">
+              <h2>The Haunting Echoes</h2>
+              <div class="lurking_text pt-3">
+                <p class="py-5">In an old mansion that echoes with the whispers of the past, you find yourself trapped. The haunting echoes of the mansion reveal the stories of its previous inhabitants. Explore the mansion, solve puzzles, and uncover the dark secrets hidden within its walls. Can you escape the haunting echoes?</p>
+              </div>
+              <div class="col-12 pb-5">
+                <button type="button" class="btn_mdl" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                  Free Demo Version
+                </button>
+                <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <div class="col-12 position-relative">
+                          <button type="button" class="btnn position-absolute end-0" data-bs-dismiss="modal" data-bs-theme="dark" aria-label="Close">
+                            <i class="bi bi-x-lg"></i>
+                          </button>
+                          <h1 class="modal-title fs-3 pt-4" id="exampleModalLabel3">Free Demo Version</h1>
+                          <p class="py-4">You can download the free demo version of "The Haunting Echoes" by clicking on the link below. Try the game and feel the atmosphere of our horror world.</p>
+                          <button type="button" class="btn btn_mdl">Download</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="bg-dark text-center text-lg-start">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Fears Of Alone:
+        <a class="text-light" href="#">Privacy Policy</a>
+      </div>
+    </footer>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>

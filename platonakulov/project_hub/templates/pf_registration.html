@@ -1,0 +1,78 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Подключение пользовательских стилей -->
+    <link href="{% static 'register-auth.css' %}" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container-fluid contimg">
+        <div id="notification" class="alert alert-warning alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x" role="alert" style="width: 25vw; max-width: 700px; display: none;">
+            Для продолжения регистрации необходимо согласиться с политикой.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="container d-flex align-items-center justify-content-center vh-100">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-start align-items-center mb-3">
+                        <a href="{% url 'home' %}"><i class="bi bi-arrow-left-short"></i></a>
+                        <a href="{% url 'authorisation' %}" class="auth-link ms-auto" style="text-decoration: none;">Авторизация</a>
+                    </div>
+                    <h5 class="card-title text-center mb-4">Регистрация</h5>
+                    <form method="post" action="{% url 'registration' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="Name" class="form-label visually-hidden">Имя</label>
+                            <input type="text" class="form-control" id="Name" name="name" placeholder="Имя" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label visually-hidden">Email</label>
+                            <div class="input-group">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label visually-hidden">Пароль</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label visually-hidden">Повторите пароль</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="confirmPassword" name="confirm_password" placeholder="Повторите пароль" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input cus" id="agree" name="agree" style="cursor: pointer;">
+                            <label class="form-check-label" for="agree" style="cursor: pointer;">Я соглашаюсь с <a href="#">политикой</a></label>
+                        </div>
+                        <div class="d-flex submit">
+                            <button type="submit" class="btn btncolor" id="registerBtn">Зарегистрироваться</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подключение Bootstrap JS -->
+    {% if show_notification %}
+    <script>
+        document.getElementById('notification').style.display = 'block';
+    </script>
+    {% endif %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

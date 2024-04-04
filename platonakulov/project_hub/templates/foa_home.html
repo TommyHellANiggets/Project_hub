@@ -1,0 +1,314 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fears Of Alone</title>
+    <link rel="stylesheet" href="{% static 'foa_style.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-languages/1.0.0/languages.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        :root {
+            --color1: #000000;
+            --color2: #ffffff;
+            --color3: #474747;
+        }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg py-4 navbg">
+        <div class="container-fluid d-flex justify-content-center">
+            <a href="{% url 'home' %}" class="floating-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6.354 11.354a.5.5 0 0 0 0-.708L3.707 8.5l2.647-2.646a.5.5 0 0 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z"/>
+                    <path fill-rule="evenodd" d="M3 8.5a.5.5 0 0 1 .5-.5h7.793a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+                Вернуться в хаб
+            </a>
+            <div class="mx-2">
+                <a class="navbar-brand" style="color: var(--color2); margin-right: 7rem; font-size: 28px;" href="#">Fears Of Alone</a>
+            </div>
+            <div class="d-inline mx-2">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Переключатель навигации">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link" style="color: var(--color2); margin-left: 7rem; font-size: 20px;" href="#news">НОВОСТИ</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-nowrap" style="color: var(--color2); margin-left: 1rem; font-size: 20px;" href="#send-history">ВАША ИСТОРИЯ</a>
+                      </li>                      
+                      <li class="nav-item">
+                        <a class="nav-link" style="color: var(--color2); margin-left: 1rem; font-size: 20px;" href="#">ПОДДЕРЖАТЬ</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="color: var(--color2); margin-left: 1rem; font-size: 20px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          СЕРИЯ ИГР
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#lurking_in_the_darkness">Lurking in the Darkness</a></li>
+                          <div class="separator"></div>
+                          <li><a class="dropdown-item" href="demo.html">Демо-версии</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <div class="dropdown">
+                            <button class="btn_lang  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              <span class="lang-sm lang-lbl" lang="ru">RU</span>
+                            </button>
+                            <ul class="dropdown-menu" style="background-color: var(--color4);">
+                              <li><a class="dropdown-item" href="{% url 'foa-en-home' %}"><span class="lang-sm lang-lbl" lang="en"></span>EN</a></li>
+                            </ul>
+                        </div>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="separator"></div>
+    <div class="container-fluid py-3" style="background-color: var(--color1);">
+        <div class="container">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="static/fearstofathom1.png" class="d-block w-100" style="max-height: 500px; border-radius: 5px;" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p class="p_main">“Fears Of Alone” - это коллекция психологических хоррор-игр, вдохновленных реальными историями, с добавлением безумных грез и фобий персонажей в определенный период их жизни.</p>
+                        <button type="button" class="button_play" style="font-size: 24px;">
+                            <a href="#collection">Каталог</a>
+                        </button>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="static/fearstofathom2.png" class="d-block w-100" style="max-height: 500px; border-radius: 5px;" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p class="p_main">Наш проект - это плод вдохновения серией игр "Fears To Fathom" от создателя "Rayll". Мы настоятельно рекомендуем приобрести и пройти игры этого создателя.</p>
+                        <button type="button" class="button_play" style="font-size: 24px;">
+                            <a href="https://www.fearstofathom.com/">Fears To Fathom</a>
+                        </button>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="static/fearstofathom3.png" class="d-block w-100" style="max-height: 500px; border-radius: 5px;" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p class="p_main">Почувствуйте атмосферу хоррор-игр, которые не дадут вам спокойно дышать. Загрузите прямо сейчас бесплатную демо-версию любой из частей “Fears Of Alone” и окунитесь в кошмары, которые испытывают главные герои.</p>
+                        <button type="button" class="button_play" style="font-size: 24px;">
+                          <a href="#collection">Попробовать Демо</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid navbg"><h1 class="text-center py-4">Новости</h1></div>
+    <div class="container-fluid contentbg py-2">
+        <div class="container" id="news">
+            <div class="row">
+                <div class="">
+                    <div class="row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                          <div class="card">
+                            <div class="card-body">
+                              <h3 class="card-title text-center">Заголовок</h3> 
+                              <p class="card-text text-center py-3">С вспомогательным текстом ниже в качестве естественного перехода к дополнительному контенту.</p>
+                              <a href="#" class="btn btn_mdl d-flex justify-content-center">Читать дальше...</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <div class="card">
+                            <div class="card-body">
+                              <h3 class="card-title text-center">Заголовок</h3> 
+                              <p class="card-text text-center py-3">С вспомогательным текстом ниже в качестве естественного перехода к дополнительному контенту.</p>
+                              <a href="#" class="btn btn_mdl d-flex justify-content-center">Читать дальше...</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                          <div class="card">
+                            <div class="card-body">
+                              <h3 class="card-title text-center">Заголовок</h3> 
+                              <p class="card-text text-center py-3">С вспомогательным текстом ниже в качестве естественного перехода к дополнительному контенту.</p>
+                              <a href="#" class="btn btn_mdl d-flex justify-content-center">Читать дальше...</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <div class="card">
+                            <div class="card-body">
+                              <h3 class="card-title text-center">Заголовок</h3> 
+                              <p class="card-text text-center py-3">С вспомогательным текстом ниже в качестве естественного перехода к дополнительному контенту.</p>
+                              <a href="#" class="btn btn_mdl d-flex justify-content-center">Читать дальше...</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid navbg" id="send-history"><h1 class="text-center py-4">Пришлите нам свою историю</h1></div>
+      <div class="container-fluid contentbg py-3">
+        <div class="container custom-bg" id="history">
+            <form>
+                <h4 class="text-center py-3">Есть ли у вас реальная история, которую мы могли бы использовать для наших проектов? Тогда расскажите нам о ней в этой форме. Если ваша история нас впечатлит, мы напишем вам на почту.</h4>
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <input type="text" class="form-control py-3" id="exampleInputName1" placeholder="Имя">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <input type="email" class="form-control py-3" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Электронная почта">
+                    </div>
+                    <div class="col-12 mb-3">
+                        <textarea class="form-control text_double" id="text" placeholder="Введите текст сообщения"></textarea>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end pb-3">
+                    <button type="submit" class="btn btn_mdl">Отправить</button>
+                </div>
+            </form>            
+        </div>
+      </div>
+      <div class="container-fluid navbg"><h1 class="text-center py-4" id="collection">Коллекция хоррор-игр Fears Of Alone</h1></div>
+      <div class="container-fluid contentbg py-2">
+        <div class="container" style="background-image: url('static/fearstofathom4.png'); background-size: cover; border-radius: 5px 5px 0 0" id="lurking_in_the_darkness">
+          <div class="row">
+            <div class="col-12 text-center pt-5">
+              <h2>Lurking In The Darkness</h2>
+              <div class="lurking_text pt-3">
+                <p class="py-5">Двое студентов отправились в летний кемпинг. Это было уютное местечко, где отдыхали добрые люди. Однако со временем они начали замечать что-то странное. Вам предстоит раскрыть тайны этого леса и узнать, что произошло в ту ночь. Вас ждет пугающее, но в то же время уютное приключение, где каждый шорох может стать последним.</p>
+              </div>
+              <div class="col-12 pb-5">
+                <button type="button" class="btn_mdl" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Бесплатная Демо-Версия
+                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <div class="col-12 position-relative">
+                          <button type="button" class="btnn position-absolute end-0" data-bs-dismiss="modal" data-bs-theme="dark" aria-label="Закрыть">
+                            <i class="bi bi-x-lg"></i>
+                          </button>                          
+                          <h1 class="modal-title fs-3 pt-4" id="exampleModalLabel">Бесплатная Демо-Версия</h1>
+                          <h1 class="modal-title fs-4 py-3" id="exampleModalLabel">Fears Of Alone: Lurking In The Darkness</h1>
+                          <div class="row ">
+                            <div class="col-6 text-nowrap">
+                              <p>Время прохождения</p>
+                              <p>Мультиплеер</p>
+                              <p>Автосохранения</p>
+                              <p>Озвучка</p>
+                              <p>Язык</p>
+                              <p>Доступность</p>
+                            </div>
+                            <div class="col-6 text-nowrap">
+                              <p>~20 минут</p>
+                              <p>нету</p>
+                              <p>нету</p>
+                              <p>есть</p>
+                              <p>русский, английский</p>
+                              <p>этот сайт</p>
+                            </div>
+                          <p class="pt-2">Скачать демо версию прямо сейчас:</p>
+                          <button type="button" class="btn btn_mdl mx-auto my-auto py-2 px-1" style="width: 200px;">
+                            <h5>Скачать</h5>
+                          </button>
+                          </div>
+                        </div>                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="btn_mdl " data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                  Купить Полную Версию
+                </button>
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <div class="col-12 position-relative">
+                          <button type="button" class="btnn position-absolute end-0" data-bs-dismiss="modal" data-bs-theme="dark" aria-label="Закрыть">
+                            <i class="bi bi-x-lg"></i>
+                          </button>                          
+                          <h1 class="modal-title fs-3 pt-4" id="exampleModalLabel">Полная Версия</h1>
+                          <h1 class="modal-title fs-4 py-3" id="exampleModalLabel">Fears Of Alone: Lurking In The Darkness</h1>
+                          <div class="row ">
+                            <div class="col-6 text-nowrap">
+                              <p>Время прохождения</p>
+                              <p>Мультиплеер</p>
+                              <p>Автосохранения</p>
+                              <p>Озвучка</p>
+                              <p>Язык</p>
+                              <p>Доступность</p>
+                            </div>
+                            <div class="col-6 text-nowrap">
+                              <p>~2 часа</p>
+                              <p>на двоих</p>
+                              <p>есть</p>
+                              <p>есть</p>
+                              <p>русский, английский</p>
+                              <p>Steam, VK Play</p>
+                            </div>
+                          <p class="pt-2">Купить полную версию прямо сейчас:</p>
+                          <button type="button" class="btn btn_mdl mx-auto my-auto py-2 px-1" style="width: 200px;">
+                            <h5>Steam</h5>
+                          </button>
+                          <button type="button" class="btn btn_mdl mx-auto my-auto py-2 px-1" style="width: 200px;">
+                            <h5>VK Play</h5>
+                          </button>
+                          </div>                   
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <button id="scroll-top-btn" class="btn" style="display: none; position: fixed; bottom: 20px; right: 10px; width: 50px; height: 50px; border-radius: 5px; background-color: var(--color4);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--color3)" class="bi bi-arrow-up" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+        </svg>
+    </button>         
+    <script>
+        // Получаем элемент кнопки по id
+        var btn = document.getElementById("scroll-top-btn");
+      
+        // Добавляем обработчик события прокрутки окна
+        window.onscroll = function() {
+          // Если прокрутили больше 100 пикселей, показываем кнопку
+          if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            btn.style.display = "block";
+          } else {
+            // Иначе скрываем кнопку
+            btn.style.display = "none";
+          }
+        };
+      
+        // Добавляем обработчик события клика на кнопку
+        btn.onclick = function() {
+          // Плавно скроллим вверх с помощью метода scrollIntoView
+          document.body.scrollIntoView({behavior: "smooth"});
+        };
+      </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,503 @@
+:root {
+    --color-blue: #3609b3;
+    --color-gray2: #1fa7ff;
+    --con: rgb(248, 248, 248);
+    --color-gray: #dfdfdf;
+    --color-white: #f8f8f8;
+    --color-card: #0a31df42;
+    --color-find: #5a64ec;
+    --color-realgray: #333;
+
+}
+
+#scrollBtn {
+    display: none; /* Скрываем кнопку по умолчанию */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99; /* Устанавливаем z-index, чтобы кнопка была поверх других элементов */
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 5px;
+    text-align: center;
+    transition: opacity 0.3s;
+}
+
+#scrollBtn:hover {
+    opacity: 0.7;
+}
+
+
+.zaglav {
+    text-align: center;
+    margin: 20px 0 !important;
+    font-size: 32px !important;
+    font-weight: 900px !important;
+    color: var(--color-gray2) !important;
+}
+
+/* Центрирование текста */
+.text-center {
+    text-align: center;
+}
+
+/* Стиль отзыва */
+.review {
+    margin-bottom: 20px;
+}
+
+/* Стиль имени в отзыве */
+.review-name {
+    font-weight: bold;
+}
+
+/* Центрирование контента в отзыве */
+.review-content {
+    text-align: center;
+}
+
+
+/* Скрыть стандартный скроллбар */
+::-webkit-scrollbar {
+    width: 4px; /* Ширина скроллбара */
+}
+
+/* Стилизация трека */
+::-webkit-scrollbar-track {
+    background: var(--color-gray2); /* Цвет фона трека */
+}
+
+/* Стилизация полосы прокрутки */
+::-webkit-scrollbar-thumb {
+    background: var(--color-gray); /* Цвет полосы прокрутки */
+    border-radius: 5px; /* Закругление углов */
+}
+
+/* При наведении курсора на скроллбар */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-white); /* Измененный цвет полосы прокрутки при наведении */
+}
+
+html {
+    background-color: var(--color-gray) !important;
+}
+
+body {
+    background-color: var(--color-gray2);
+}
+
+/* Navbar adjustments */
+.navbar-custom {
+    background: rgb(140,8,255);
+    background: radial-gradient(circle, rgba(140,8,255,1) 0%, rgba(31,167,255,1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.nav-item {
+    position: relative;
+    list-style: none; /* Убираем маркеры списка */
+}
+
+.nav-link {
+    text-decoration: none; /* Убираем подчеркивание ссылки */
+    color: black; /* Цвет текста */
+}
+
+.dropdown-item .nav-text {
+    margin-top: 0 !important;
+}
+
+.biba {
+    font-size: 18px; /* Размер иконки */
+    position: absolute;
+    margin-left: 16px;
+    margin-top: 12px;
+}
+
+.nav-text {
+    margin-top: 32px !important; /* Расстояние от иконки до текста */
+}
+
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+.clear-icon {
+    position: absolute;
+    margin-top: -22px;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--color-gray2);
+    font-weight: 900;
+    font-size: 22px;
+    display: none;
+}
+
+.clear-icon:hover {
+    color: #555;
+}
+
+#inputField {
+    max-width: 500px;
+    width: 50vw;
+    height: 40px;
+    margin: auto 0 ;
+    font-size: 12px;
+    border-radius: 10px;
+    border-style: none;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+#inputField::placeholder {
+    color: var(--color-realgray);
+}
+
+.navbar-brand {
+    color: #ffffff;
+    flex-grow: 0;
+    margin-top: 28px;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+    color: #ffffff;
+}
+
+.navbar-nav {
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.nav-link {
+    color: #ffffff !important;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.nav-link:focus,
+.nav-link:hover {
+    color: #ffffff !important;
+}
+
+/* Other styles */
+.dropdown-menu {
+    background-color: var(--con);
+}
+
+.dropdown-menu a {
+    color: var(--color-gray2);
+    font-weight: 900 !important;
+}
+
+.con-fl-bg {
+    background-color: var(--color-gray); /* Прозрачный белый */
+    padding-top: 10px;
+    border-radius: 20px 20px 0 0;
+}
+
+.con-bg {
+    max-width: 1280px !important;
+    background-color: var(--con); /* Прозрачный белый */
+    border-radius: 15px;
+}
+
+.card-item {
+    width: 200px;
+    height: 350px;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.card-image-item {
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.card-image-item img {
+    object-fit: cover; /* Изображение занимает всю доступную область, обрезая края */
+    object-position: center; /* Позиционирование изображения по центру */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-details {
+    padding: 10px;
+}
+
+.card-price {
+    color: var(--color-find);
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+}
+
+.card-title {
+    margin-top: 5px;
+    color: var(--color-realgray);
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.btn-cart {
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-find);
+    color: var(--color-white);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cart:hover {
+    background-color: var(--color-blue);
+}
+
+
+.card .card-body {
+    padding: 10px; /* Отступы внутри содержимого карточки */
+    height: 130px; /* Высота содержимого карточки */
+    min-width: 130px !important;
+    min-height: 130px;
+    max-height: 130px;
+    background-color: #f8f9fa; /* Цвет фона содержимого карточки */
+
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Разрешаем перенос элементов на следующую строку */
+    gap: 10px; /* Расстояние между карточками */
+    justify-content: center; /* Выравнивание карточек по центру */
+    margin: 0 auto; /* Центрирование контейнера */
+    max-width: 1400px !important; /* Примерная максимальная ширина контейнера */
+}
+
+
+.card {
+    width: 100%; /* Ширина карточки занимает всю доступную ширину контейнера */
+    position: relative;
+    height: 100%;
+    border: none;    
+}
+
+.card-body {
+    border: 1px solid var(--color-realgray);
+    border-radius: 0 0 15px 15px !important;
+
+}
+
+.card-footer {
+    background-color: #f8f9fa !important; /* Цвет фона содержимого карточки */
+
+}
+
+.footer-info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-info p {
+    color: #fff;
+    margin: 0;
+}
+.footer {
+    background-color: #333; /* Темносерый фон */
+    color: #fff; /* Светлый цвет текста */
+    padding: 20px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.contact-info a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #ccc; /* Изменение цвета ссылки при наведении */
+}
+
+.social-links a {
+    margin-right: 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ccc; /* Изменение цвета ссылки при наведении */
+}
+
+.footer-policy {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-policy a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-policy a:hover {
+    color: #ccc; /* Изменение цвета ссылки при наведении */
+}
+
+
+.card-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Пример прозрачного бэкграунда */
+    backdrop-filter: blur(10px); /* Пример размытия фона */
+    border: NONE;
+
+}
+
+.card-footer form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.card-footer form button {
+    width: 100%;
+
+}
+
+
+
+.search-input {
+    margin-top: 22px !important;
+}
+
+.navbar-brand {
+    font-family: "Nunito", sans-serif !important;
+}
+
+.quantity-input {
+    height: 30px;
+    width: 40px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--color-gray2);
+    padding-left: 10px;
+    color: var(--color-gray2);
+}
+
+.quantity-container {
+    position: absolute; /* Позиционируем контейнер с количеством товаров абсолютно внутри карточки */
+    left: 10px; /* Отступ слева */
+    bottom: 10px; /* Отступ снизу */
+}
+
+.add-to-cart-btn:hover {
+    background-color: #0056b3;
+}
+
+.add-to-cart-btn {
+    position: absolute; /* Позиционируем кнопку абсолютно внутри родительского элемента */
+    bottom: 0px; /* Выравниваем кнопку по нижнему краю */
+    left: 45px; /* Отступ справа */
+    border-radius: 5px;
+    border: 1px solid var(--color-gray2);
+    background-color: var(--color-gray2);
+    color: var(--color-white);
+    width: 80px;
+    height: 30px;
+}
+
+
+/* Блок отзывов */
+
+.comment-container {
+    position: relative;
+    overflow: hidden;
+    height: 120px; /* Ограничиваем высоту контейнера, чтобы видеть только 3 комментария */
+}
+
+.comment {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px; /* Ограничиваем ширину текста комментария */
+    padding: 10px;
+    margin-right: 100px; /* Добавляем промежуток между комментариями */
+    white-space: nowrap;
+    animation: moveComment 10s linear infinite;
+}
+
+@keyframes moveComment {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #090909f8;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid #3f007f;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 15px 0 rgba(63, 0, 127, 0.94); 
+    z-index: 999;
+}
+
+.floating-button:hover {
+    transition: transform 0.3s ease; 
+    transform: scale(0.95); 
+}

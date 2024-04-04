@@ -1,0 +1,165 @@
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Главная</title>
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    
+    <nav class="navbar navbar-expand-lg sticky-top py-3">
+        <div class="d-flex mx-auto">
+          <a class="navbar-brand my-auto" href="#">Платон Акулов</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex my-auto" role="search">
+                <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+            </form>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item" style="margin-left: 50px;">
+                  <a class="nav-link" href="#">Главная</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#about_me">Обо мне</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#contact">Контакты</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <main>
+        <video autoplay muted loop id="video-background">
+            <source src="{% static 'img/video.mp4' %}" type="video/mp4">
+        </video>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="title my-5">Мои Проекты</h4>
+                </div>
+              <div class="col-md-6">
+                <a href="{% url 'pf-home' %}" class="card">
+                  <div class="card-body">
+                    <h1>Power Fuel</h1>
+                    <p>Сайт по спортпиту</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-6">
+                <a href="{% url 'eg-home' %}" class="card">
+                  <div class="card-body">
+                    <h1>Easy Goal</h1>
+                    <p>Тасктреккер</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-6">
+                <a href="{% url 'foa-home' %}" class="card">
+                  <div class="card-body">
+                    <h1>Smart Skills</h1>
+                    <p>Сайт по курсам</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-6">
+                <a href="{% url 'foa-home' %}" class="card">
+                  <div class="card-body">
+                    <h1>Fears Of Alone</h1>
+                    <p>Сайт о серии хоррор играх</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-6">
+                <a href="#" class="card">
+                  <div class="card-body">
+                    <h1>Donut Dawg</h1>
+                    <p>Пончиковая</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-6">
+                <a href="#" class="card">
+                  <div class="card-body">
+                    <h1>SmallDickBigDreams</h1>
+                    <p>Веб-блог</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+      </main>
+      <about>
+        <div class="container">
+          <h4 class="title my-5" id="about_me">Обо мне</h4>
+          <p>
+            Давайте рассмотрим несколько аспектов темы "путешествия".
+
+Путешествия - это не просто перемещение из одного места в другое; это опыт, который расширяет горизонты, обогащает нашу жизнь новыми впечатлениями и уроками. Каждая поездка представляет собой возможность открыть для себя что-то новое, будь то культура, кухня, история или просто красота природы.
+
+Одним из самых удивительных аспектов путешествий является способность погрузиться в другую культуру и понять ее. Когда мы путешествуем, мы имеем возможность встретиться с людьми из разных стран, познакомиться с их обычаями и традициями, что помогает нам лучше понять и ценить многообразие мира, в котором мы живем.
+
+Кроме того, путешествия способствуют личному развитию. Они вынуждают нас выходить из зоны комфорта, преодолевать страхи и преодолевать препятствия. Каждая новая ситуация на пути требует от нас адаптации и решения проблем, что способствует нашему росту как личности.
+
+Путешествия также могут быть источником вдохновения и творчества. Новые места, лица и впечатления могут вдохновить на создание новых проектов, идей или даже изменения в нашей жизни. Они помогают нам видеть мир с новой перспективы и расширять наши горизонты.
+
+Кроме того, путешествия способствуют укреплению межличностных связей. Путешествия с друзьями или семьей создают незабываемые воспоминания и укрепляют взаимоотношения. Общие приключения и испытания могут привести к более глубокому пониманию и уважению друг к другу.
+
+Не стоит забывать и о физических выгодах путешествий. Они могут быть отличным способом расслабиться, отдохнуть от повседневной рутины и подзарядиться новой энергией. Исследование новых мест и активный отдых на свежем воздухе благоприятно влияют на наше физическое и психическое здоровье.
+
+Таким образом,Давайте рассмотрим несколько аспектов темы "путешествия".
+
+Путешествия - это не просто перемещение из одного места в другое; это опыт, который расширяет горизонты, обогащает нашу жизнь новыми впечатлениями и уроками. Каждая поездка представляет собой возможность открыть для себя что-то новое, будь то культура, кухня, история или просто красота природы.
+
+Одним из самых удивительных аспектов путешествий является способность погрузиться в другую культуру и понять ее. Когда мы путешествуем, мы имеем возможность встретиться с людьми из разных стран, познакомиться с их обычаями и традициями, что помогает нам лучше понять и ценить многообразие мира, в котором мы живем.
+
+Кроме того, путешествия способствуют личному развитию. Они вынуждают нас выходить из зоны комфорта, преодолевать страхи и преодолевать препятствия. Каждая новая ситуация на пути требует от нас адаптации и решения проблем, что способствует нашему росту как личности.
+
+Путешествия также могут быть источником вдохновения и творчества. Новые места, лица и впечатления могут вдохновить на создание новых проектов, идей или даже изменения в нашей жизни. Они помогают нам видеть мир с новой перспективы и расширять наши горизонты.
+
+Кроме того, путешествия способствуют укреплению межличностных связей. Путешествия с друзьями или семьей создают незабываемые воспоминания и укрепляют взаимоотношения. Общие приключения и испытания могут привести к более глубокому пониманию и уважению друг к другу.
+
+Не стоит забывать и о физических выгодах путешествий. Они могут быть отличным способом расслабиться, отдохнуть от повседневной рутины и подзарядиться новой энергией. Исследование новых мест и активный отдых на свежем воздухе благоприятно влияют на наше физическое и психическое здоровье.
+
+Таким образом, путешествия играют важную роль в нашей жизни, обогащая нас новыми впечатлениями, знаниями и опытом. Они помогают нам стать более открытыми, гибкими и полноценными личностями. Поэтому не стоит бояться искать новые приключения и исследовать мир вокруг себя.
+ путешествия играют важную роль в нашей жизни, обогащая нас новыми впечатлениями, знаниями и опытом. Они помогают нам стать более открытыми, гибкими и полноценными личностями. Поэтому не стоит бояться искать новые приключения и исследовать мир вокруг себя.
+          </p>
+        </div>
+        <h4 class="title my-5" id="contact">Контакты</h4>
+        
+      </about>
+      <footer class="footer">
+        <div class="container">
+            <div class="footer-content mx-auto">
+                <div class="contact-info">
+                    <p>Акулов П. А.</p>
+                    <p>Email: <a href="mailto:platonakulov@outlook.com">platonakulov@outlook.com</a></p>
+                    <p>Phone: <a href="tel:+79001191820">+7 (900) 119-18-20</a></p>
+                </div>
+                <div class="social-links">
+                    <h6>Связаться со мной</h6>
+                    <a href="https://t.me/tombeckles" target="_blank">
+                      <img src="{% static "img/tg.png" %}" alt="VK" style="width: 35px; height: 35px;">
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=79001191820&text=Разрабатываю%20сайты%20разной%20степени%20сложности" target="_blank">
+                      <img src="{% static "img/wa.png" %}" alt="VK" style="width: 35px; height: 35px;">
+                    </a>
+                    <a href="https://vk.com/tommyhellaniggets" target="_blank">
+                      <img src="{% static "img/vk.png" %}" alt="VK" style="width: 35px; height: 35px;">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

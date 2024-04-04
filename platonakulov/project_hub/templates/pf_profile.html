@@ -1,0 +1,33 @@
+{% extends 'pf_base.html' %}
+
+{% block title %}
+    Профиль - Power Fuel
+{% endblock %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+        <h2 class="text-center mb-4">Профиль пользователя</h2>
+        <p><strong>Имя пользователя:</strong> {{ user.username }}</p>
+        <p><strong>Эл. почта:</strong> {{ user.email }}</p>
+
+        <h3 class="mt-4">Сменить пароль</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ password_change_form.as_p }}
+            <button type="submit" class="btn btn-primary">Сохранить пароль</button>
+        </form>
+
+        <h3 class="mt-4">Сменить электронную почту</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ user_change_form.as_p }}
+            <button type="submit" class="btn btn-primary">Сохранить эл. почту</button>
+        </form>
+
+        <h3 class="mt-4">Другие действия</h3>
+        <a href="{% url 'pf_logout' %}" class="btn btn-danger">Выйти</a>
+        <a href="{% url 'pf_login' %}" class="btn btn-secondary">Сменить пользователя</a>
+    </div>
+</div>
+{% endblock %}
