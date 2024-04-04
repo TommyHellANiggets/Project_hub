@@ -43,6 +43,12 @@ nav {
     color: var(--second-color) !important;
 }
 
+.form-control:focus  {
+    border: 1px solid var(--main-color) !important;
+    box-shadow: none;
+    transition: border-color 0.3s ease; /* Добавляем плавное переходное свойство */
+}
+
 .card {
     background-color: var(--card-bg) !important;
     border: 1px solid var(--main-color);
@@ -187,4 +193,48 @@ main {
 
 .footer-policy a:hover {
     color: #ccc; /* Изменение цвета ссылки при наведении */
+}
+
+.pause-button {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    background-color: #090909f8;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid #3f007f;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 15px 0 rgba(63, 0, 127, 0.94); 
+    z-index: 1100;
+    font-size: 20px !important;
+}
+
+.pause-button:hover {
+    transition: transform 0.3s ease; 
+    transform: scale(0.95); 
+}
+
+
+#scrollBtn {
+    display: none; /* Скрываем кнопку по умолчанию */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #090909f8;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid #3f007f;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 15px 0 rgba(63, 0, 127, 0.94); 
+    z-index: 1100;
+    font-size: 20px !important;
+}
+
+#scrollBtn:hover {
+    transition: transform 0.3s ease; 
+    transform: scale(0.95); 
 }
