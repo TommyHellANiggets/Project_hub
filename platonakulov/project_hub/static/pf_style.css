@@ -1,13 +1,13 @@
 :root {
-    --color-blue: #3609b3;
-    --color-gray2: #1fa7ff;
+    --color-blue: #2B2D42;
+    --color-gray2: #2B2D42;
     --con: rgb(248, 248, 248);
-    --color-gray: #dfdfdf;
-    --color-white: #f8f8f8;
-    --color-card: #0a31df42;
+    --color-gray: #b8dbd9;
+    --color-white: #f4f4f9;
+    --color-card: #04724d;
     --color-find: #5a64ec;
     --color-realgray: #333;
-
+    --color-nav: #04724d;
 }
 
 #scrollBtn {
@@ -95,8 +95,7 @@ body {
 
 /* Navbar adjustments */
 .navbar-custom {
-    background: rgb(140,8,255);
-    background: radial-gradient(circle, rgba(140,8,255,1) 0%, rgba(31,167,255,1) 100%);
+    background-color: var(--color-nav);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -207,13 +206,13 @@ body {
 .con-fl-bg {
     background-color: var(--color-gray); /* Прозрачный белый */
     padding-top: 10px;
-    border-radius: 20px 20px 0 0;
+    border-radius: 15px 15px 0 0;
 }
 
 .con-bg {
     max-width: 1280px !important;
     background-color: var(--con); /* Прозрачный белый */
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .card-item {
@@ -251,7 +250,7 @@ a {
 }
 
 .card-price {
-    color: var(--color-find);
+    color: var(--color-nav);
     font-weight: bold;
     font-size: 16px;
     margin: 0;
@@ -269,7 +268,7 @@ a {
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
-    background-color: var(--color-find);
+    background-color: var(--color-gray2);
     color: var(--color-white);
     font-size: 14px;
     cursor: pointer;
@@ -277,7 +276,8 @@ a {
 }
 
 .btn-cart:hover {
-    background-color: var(--color-blue);
+    background-color: #586f7c;
+    color: white;
 }
 
 
@@ -329,7 +329,8 @@ a {
     margin: 0;
 }
 .footer {
-    background-color: #333; /* Темносерый фон */
+    bottom: 0;
+    background-color: var(--color-blue); /* Темносерый фон */
     color: #fff; /* Светлый цвет текста */
     padding: 20px 0;
 }
@@ -437,23 +438,6 @@ a {
     bottom: 10px; /* Отступ снизу */
 }
 
-.add-to-cart-btn:hover {
-    background-color: #0056b3;
-}
-
-.add-to-cart-btn {
-    position: absolute; /* Позиционируем кнопку абсолютно внутри родительского элемента */
-    bottom: 0px; /* Выравниваем кнопку по нижнему краю */
-    left: 45px; /* Отступ справа */
-    border-radius: 5px;
-    border: 1px solid var(--color-gray2);
-    background-color: var(--color-gray2);
-    color: var(--color-white);
-    width: 80px;
-    height: 30px;
-}
-
-
 /* Блок отзывов */
 
 .comment-container {
@@ -494,10 +478,63 @@ a {
     cursor: pointer;
     text-decoration: none;
     box-shadow: 0 0 15px 0 rgba(63, 0, 127, 0.94); 
-    z-index: 999;
+    z-index: 1200;
 }
 
 .floating-button:hover {
     transition: transform 0.3s ease; 
     transform: scale(0.95); 
+}
+
+
+.scrollbut {
+    background-color: var(--color-card) !important;
+}
+
+.product-image {
+    margin-left: 30px;
+}
+
+.product-image img {
+    border-radius: 5px;
+    width: 100%;
+}
+
+.product-price {
+    margin-top: 40px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.product-description {
+    max-width: 400px; 
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.add-to {
+    margin-top: 40px;
+    border-radius: 5px;
+    background-color: var(--color-card);
+    color: #dfdfdf;
+    padding: 10px 20px;
+    border: none;
+}
+
+.card-cart:hover {
+    background-color: #586f7c;
+}
+
+
+.btn-add-comment {
+    background-color: var(--color-card);
+    color: white;  
+
+}
+
+.btn-add-comment:hover {
+    background-color: #586f7c;
+    color: white;  
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
 }

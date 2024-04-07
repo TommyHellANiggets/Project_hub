@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .models import Fuel, Review
 from .forms import ReviewForm
+from django.shortcuts import render, redirect, get_object_or_404
 
 # Project Hub
 def home(request):
@@ -36,7 +36,7 @@ def pf_cart(request):
     return render(request, 'pf_cart.html')
 
 def pf_home(request):
-    fuels = Fuel.objects.all()
+    fuels = Fuel.objects.all()[:12]  # Получение максимум 12 объектов Fuel
     reviews = Review.objects.all()[:3]  # Получение только трех отзывов
     form = ReviewForm()
 
@@ -48,8 +48,38 @@ def pf_home(request):
 
     return render(request, 'pf_home.html', {'fuels': fuels, 'reviews': reviews, 'form': form})
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 def pf_catalog(request):
-    return render(request, 'pf_catalog.html')
+    fuels_list = Fuel.objects.all()
+    paginator = Paginator(fuels_list, 12)  # Показывать 12 товаров на странице
+
+    page = request.GET.get('page')
+    try:
+        fuels = paginator.page(page)
+    except PageNotAnInteger:
+        # Если страница не является целым числом, отображаем первую страницу
+        fuels = paginator.page(1)
+    except EmptyPage:
+        # Если страница выходит за пределы доступных (например, 9999), отображаем последнюю страницу результатов
+        fuels = paginator.page(paginator.num_pages)
+
+    reviews = Review.objects.all()[:3]  # Получение только трех отзывов
+    form = ReviewForm()
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('pf-home')
+
+    return render(request, 'pf_catalog.html', {'fuels': fuels, 'reviews': reviews, 'form': form})
+
+
+def fuel_detail(request, fuel_id):
+    fuel = get_object_or_404(Fuel, pk=fuel_id)
+    return render(request, 'fuel_detail.html', {'fuel': fuel})
+
 
 def pf_registration(request):
     return render(request, 'pf_registration.html')
@@ -110,3 +140,4 @@ def foa_home(request):
 
 def foa_en_home(request):
     return render(request, 'foa_en_home.html')
+

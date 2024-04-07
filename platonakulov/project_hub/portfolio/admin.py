@@ -25,3 +25,4 @@ class FuelAdmin(admin.ModelAdmin):
     photo_display.allow_tags = True
     photo_display.short_description = 'Photo Preview'
 
+    

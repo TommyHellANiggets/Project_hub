@@ -1,0 +1,20 @@
+{% extends 'pf_base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content-container row">
+    <div class="product-image col-6">
+        <h2 class="product-name">{{ fuel.name }}</h2>
+        <img src="{{ fuel.photo_url }}" alt="{{ fuel.name }}">
+    </div>
+    <div class="product-info col-5 d-flex flex-column">
+        <div class="d-flex justify-content-end mb-3">
+            <p class="product-price">{{ fuel.price|floatformat:0 }} ₽</p>
+            <button class="add-to">Добавить в корзину</button>
+        </div>
+        <div>
+            <p class="product-description">Описание товара: {{ fuel.description }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

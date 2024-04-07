@@ -6,7 +6,6 @@ from portfolio import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('admin/', admin.site.urls),
-    
 # Power Fuel
     path('pf-home/', views.pf_home, name='pf-home'),  # URL для главной страницы
     path('pf-registration/', views.pf_registration, name='pf-registration'),  # URL для страницы регистрации
@@ -14,10 +13,10 @@ urlpatterns = [
     path('pf-cart/', views.pf_cart, name='pf-cart'),  # URL для страницы корзины
     path('pf-catalog/', views.pf_catalog, name='pf-catalog'),  # URL для страницы каталога
     path('pf-profile/', views.pf_profile, name='pf-profile'),  # URL для страницы профиля
-
+# индивидуальный url
+    path('fuels/<int:fuel_id>/', views.fuel_detail, name='fuel-detail'),
 # Easy Goal
     path('eg-home/', views.eg_home, name='eg-home'),  
-
 # Smart Skill
 
 # Fears Of Alone

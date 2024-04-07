@@ -41,7 +41,7 @@
                 </li>
                 <!-- Каталог -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#catalog">
+                    <a class="nav-link" href="{% url 'pf-catalog' %}">
                         <i class="bi bi-journal-text biba"></i>
                         <p class="nav-text">Каталог</p>
                     </a>
@@ -94,7 +94,7 @@
         </svg>
         Вернуться в хаб
     </a>
-    <button onclick="scrollToTop()" id="scrollBtn" title="Вверх"><i class="bi bi-arrow-up-short" style="font-size: 30px"></i></button>
+    <button onclick="scrollToTop()" id="scrollBtn" title="Вверх" class='scrollbut'><i class="bi bi-arrow-up-short" style="font-size: 30px"></i></button>
     <div class="container con-bg pb-3">
         {% block content %}
         {% endblock %}

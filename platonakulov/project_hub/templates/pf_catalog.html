@@ -3,3 +3,47 @@
 {% block title %}
     Каталог
 {% endblock %}
+{% block content %}
+<div class="cards-container" id="cardsContainer">
+    {% for fuel in fuels %}
+    <a href="{% url 'fuel-detail' fuel.id %}">
+        <div class="card-item">
+            <div class="card-image-item">
+                <img src="{{ fuel.photo_url }}" alt="{{ fuel.name }}">
+            </div>
+            <div class="card-details">
+                <p class="card-price">{{ fuel.price|floatformat:0 }} ₽</p>
+                <p class="card-title">{{ fuel.name }}</p>
+                <button type="submit" class="btn-cart">В корзину</button>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% if fuels.has_other_pages %}
+<nav aria-label="Пример навигации по страницам">
+  <ul class="pagination">
+    {% if fuels.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ fuels.previous_page_number }}" aria-label="Предыдущая">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% endif %}
+    {% for i in fuels.paginator.page_range %}
+    <li class="page-item {% if fuels.number == i %}active{% endif %}">
+      <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+    </li>
+    {% endfor %}
+    {% if fuels.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ fuels.next_page_number }}" aria-label="Следующая">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
+{% endblock %}
