@@ -14,7 +14,8 @@ SECRET_KEY = 'django-insecure-kg*cpwmw-wn#i%+7l^327l-a+n88xs+=@_pk!x2#$m%4t(4##w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
 
 
 # Application definition
@@ -67,7 +68,7 @@ WSGI_APPLICATION = 'project_hub.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'powerfuel',
+        'NAME': 'pf_neww',
         'USER': 'root',
         'PASSWORD': '12345678',
         'HOST': 'localhost',   # Или адрес сервера MySQL

@@ -1,4 +1,5 @@
 {% extends 'pf_base.html' %}
+{% load static %}
 
 {% block title %}
     Каталог
@@ -6,7 +7,8 @@
 {% block content %}
 <div class="cards-container" id="cardsContainer">
     {% for fuel in fuels %}
-    <a href="{% url 'fuel-detail' fuel.id %}">
+    <form action="{% url 'add-to-cart' slug=fuel.slug %}" method="post">
+        {% csrf_token %}
         <div class="card-item">
             <div class="card-image-item">
                 <img src="{{ fuel.photo_url }}" alt="{{ fuel.name }}">
@@ -17,9 +19,11 @@
                 <button type="submit" class="btn-cart">В корзину</button>
             </div>
         </div>
-    </a>
+    </form>
     {% endfor %}
 </div>
+
+
 
 {% if fuels.has_other_pages %}
 <nav aria-label="Пример навигации по страницам">
@@ -47,3 +51,89 @@
 </nav>
 {% endif %}
 {% endblock %}
+
+<script>
+    document.querySelectorAll('.btn-cart').forEach(btn => {
+        btn.addEventListener('click', function(event) {
+            event.preventDefault(); // Отменяем стандартное действие кнопки
+
+            const form = this.closest('form'); // Находим ближайшую форму
+            const formData = new FormData(form); // Создаем объект FormData для данных формы
+
+            fetch(form.action, { // Отправляем POST-запрос на сервер
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}', // Передаем CSRF-токен
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Обновляем содержимое корзины на странице
+                    updateCartContent();
+                    alert('Товар добавлен в корзину!');
+                } else {
+                    alert('Ошибка при добавлении товара в корзину.');
+                }
+            }).catch(error => {
+                console.error('Ошибка:', error);
+            });
+        });
+    });
+
+    function updateCartContent() {
+        // Получаем контейнер корзины
+        const cart = document.getElementById('cart');
+
+        // Очищаем содержимое корзины
+        cart.innerHTML = '';
+
+        // Добавляем заголовок и кнопку закрытия
+        const cartContent = document.createElement('div');
+        cartContent.classList.add('cart-content');
+        const cartTitle = document.createElement('h2');
+        cartTitle.textContent = 'Корзина';
+        const closeBtn = document.createElement('div');
+        closeBtn.classList.add('close-btn');
+        closeBtn.textContent = 'Закрыть';
+        closeBtn.addEventListener('click', closeCart);
+        cartContent.appendChild(cartTitle);
+        cartContent.appendChild(closeBtn);
+        cart.appendChild(cartContent);
+
+        // Получаем данные о корзине из сессии
+        fetch('/get-cart/')  // Предполагается, что есть URL для получения содержимого корзины
+            .then(response => response.json())
+            .then(data => {
+                // Если корзина не пуста, добавляем содержимое
+                if (Object.keys(data.cart).length > 0) {
+                    for (const [slug, item] of Object.entries(data.cart)) {
+                        const cartItemHTML = `
+                            <div class="cart-item">
+                                <img src="${item.photo_url}" alt="${item.name}">
+                                <p>${item.name}</p>
+                                <p>${item.price} ₽</p>
+                            </div>`;
+                        cartContent.innerHTML += cartItemHTML;
+                    }
+                } else {
+                    // Если корзина пуста, добавляем соответствующее сообщение
+                    const emptyCartMsg = document.createElement('p');
+                    emptyCartMsg.textContent = 'Корзина пуста.';
+                    cartContent.appendChild(emptyCartMsg);
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка получения содержимого корзины:', error);
+            });
+    }
+
+    function closeCart() {
+        // Скрытие корзины при закрытии
+        const cart = document.getElementById('cart');
+        cart.style.display = 'none';
+    }
+</script>
+
+
+
+<script src="{% static 'js/search_scripts.js' %}"></script>

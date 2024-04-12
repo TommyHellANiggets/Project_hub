@@ -2,12 +2,12 @@
     --color-blue: #2B2D42;
     --color-gray2: #2B2D42;
     --con: rgb(248, 248, 248);
-    --color-gray: #b8dbd9;
+    --color-gray: #ededed;
     --color-white: #f4f4f9;
-    --color-card: #04724d;
+    --color-card: #0e79bb;
     --color-find: #5a64ec;
     --color-realgray: #333;
-    --color-nav: #04724d;
+    --color-nav: #5FA8D3;
 }
 
 #scrollBtn {
@@ -36,6 +36,7 @@
 
 
 .zaglav {
+    border-radius: 10px 10px 0 0;
     text-align: center;
     margin: 20px 0 !important;
     font-size: 32px !important;
@@ -76,7 +77,7 @@
 
 /* Стилизация полосы прокрутки */
 ::-webkit-scrollbar-thumb {
-    background: var(--color-gray); /* Цвет полосы прокрутки */
+    background: var(--color-nav); /* Цвет полосы прокрутки */
     border-radius: 5px; /* Закругление углов */
 }
 
@@ -87,10 +88,11 @@
 
 html {
     background-color: var(--color-gray) !important;
+
 }
 
 body {
-    background-color: var(--color-gray2);
+    background-color: var(--color-gray);
 }
 
 /* Navbar adjustments */
@@ -101,31 +103,32 @@ body {
     align-items: center;
     padding: 10px 20px;
     width: 100%;
+    height: 80px;
 }
 
 .nav-item {
     position: relative;
-    list-style: none; /* Убираем маркеры списка */
+    align-content: center !important;
+    list-style: none;
+    font-size: 18px;
+
 }
 
 .nav-link {
-    text-decoration: none; /* Убираем подчеркивание ссылки */
-    color: black; /* Цвет текста */
+    text-decoration: none;
+    color: black;
+    font-size: 18px !important;
+
 }
 
 .dropdown-item .nav-text {
     margin-top: 0 !important;
 }
 
-.biba {
-    font-size: 18px; /* Размер иконки */
-    position: absolute;
-    margin-left: 16px;
-    margin-top: 12px;
-}
-
 .nav-text {
-    margin-top: 32px !important; /* Расстояние от иконки до текста */
+    color: var(--color-white); /* Цвет текста */
+    margin: 0 auto;
+    font-size: 18px;
 }
 
 .search-container {
@@ -150,15 +153,17 @@ body {
 }
 
 #inputField {
+    margin: auto 20px !important;
     max-width: 500px;
     width: 50vw;
-    height: 40px;
+    height: 50px;
     margin: auto 0 ;
     font-size: 12px;
     border-radius: 10px;
     border-style: none;
     padding-left: 20px;
     font-size: 20px;
+    border: 2px solid var(--color-card);
 }
 
 #inputField::placeholder {
@@ -167,8 +172,8 @@ body {
 
 .navbar-brand {
     color: #ffffff;
-    flex-grow: 0;
-    margin-top: 28px;
+    margin: auto 0 !important;
+    padding-right: 20px;
 }
 
 .navbar-brand:hover,
@@ -177,8 +182,9 @@ body {
 }
 
 .navbar-nav {
-    flex-grow: 1;
     justify-content: flex-end;
+    margin: 0 auto !important;
+
 }
 
 .nav-link {
@@ -207,12 +213,15 @@ body {
     background-color: var(--color-gray); /* Прозрачный белый */
     padding-top: 10px;
     border-radius: 15px 15px 0 0;
+    min-height: 72%;
+    margin-top: 20px;
 }
 
 .con-bg {
     max-width: 1280px !important;
     background-color: var(--con); /* Прозрачный белый */
-    border-radius: 10px;
+    border-radius: 25px;
+
 }
 
 .card-item {
@@ -223,7 +232,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+
 }
 
 .card-image-item {
@@ -292,6 +301,7 @@ a {
 }
 
 .cards-container {
+    padding-top: 20px;
     display: flex;
     flex-wrap: wrap; /* Разрешаем перенос элементов на следующую строку */
     gap: 10px; /* Расстояние между карточками */
@@ -305,7 +315,7 @@ a {
     width: 100%; /* Ширина карточки занимает всю доступную ширину контейнера */
     position: relative;
     height: 100%;
-    border: none;    
+    border: none;
 }
 
 .card-body {
@@ -333,6 +343,7 @@ a {
     background-color: var(--color-blue); /* Темносерый фон */
     color: #fff; /* Светлый цвет текста */
     padding: 20px 0;
+    position: relative;
 }
 
 .container {
@@ -477,13 +488,13 @@ a {
     border: 2px solid #3f007f;
     cursor: pointer;
     text-decoration: none;
-    box-shadow: 0 0 15px 0 rgba(63, 0, 127, 0.94); 
+    box-shadow: 0 0 15px 0 rgba(63, 0, 127, 0.94);
     z-index: 1200;
 }
 
 .floating-button:hover {
-    transition: transform 0.3s ease; 
-    transform: scale(0.95); 
+    transition: transform 0.3s ease;
+    transform: scale(0.95);
 }
 
 
@@ -507,7 +518,7 @@ a {
 }
 
 .product-description {
-    max-width: 400px; 
+    max-width: 400px;
     word-wrap: break-word;
     text-align: left;
 }
@@ -528,13 +539,115 @@ a {
 
 .btn-add-comment {
     background-color: var(--color-card);
-    color: white;  
+    color: white;
 
 }
 
 .btn-add-comment:hover {
     background-color: #586f7c;
-    color: white;  
+    color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease; 
+    transition: background-color 0.3s ease;
+}
+
+/* поиск. запросы */
+.suggestions-container {
+    position: absolute;
+    top: 100%; /* Отображаем контейнер под полем ввода */
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* Цвет фона контейнера */
+    border: 1px solid #ccc; /* Граница контейнера */
+    z-index: 1; /* Устанавливаем z-index, чтобы контейнер находился над основным контентом */
+    display: none; /* По умолчанию контейнер скрыт */
+}
+
+/* Стили для списка предложений */
+.suggestions-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Стили для элементов списка */
+.suggestions-list li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Плавное изменение цвета фона при наведении */
+}
+
+.suggestions-list li:hover {
+    background-color: #f4f4f4; /* Цвет фона при наведении */
+}
+
+/* Стили для элемента корзины */
+/* Стили для корзины */
+.cart {
+    position: fixed;
+    top: 0;
+    right: -600px; /* Изначально сдвигаем корзину за пределы экрана */
+    max-width: 600px;
+    width: 90vw;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1500 !important;
+    overflow-y: auto; /* Добавляем скролл, если содержимое больше высоты */
+    padding: 20px;
+    transition: right 0.3s ease; /* Анимация открытия/закрытия */
+}
+
+/* Фоновый слой для затемнения оставшейся части экрана */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Черный цвет с непрозрачностью 50% */
+    z-index: 999; /* Устанавливаем слой поверх всего остального контента */
+    display: none; /* Скрываем изначально */
+    transition: opacity 0.3s ease;
+}
+
+/* Стили для кнопки закрытия корзины */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Стили для содержимого корзины */
+.cart-content {
+    /* Добавьте нужные стили для содержимого корзины */
+}
+
+/* Стили для элементов в корзине (например, продуктов) */
+.cart-item {
+    /* Добавьте нужные стили для каждого элемента в корзине */
+}
+
+/* Стили для общей суммы и кнопок в корзине */
+.cart-summary {
+    /* Добавьте нужные стили для общей суммы и кнопок */
+}
+
+/* Стили для ссылки продолжения покупок в корзине */
+.continue-shopping {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Активация анимации при открытии корзины */
+.cart.opened {
+    right: 0; /* При открытии корзины сдвигаем ее влево на 0 */
+}
+
+/* Активация затемнения остальной части страницы */
+.overlay.active {
+    display: block; /* При активации затемнения отображаем overlay */
 }

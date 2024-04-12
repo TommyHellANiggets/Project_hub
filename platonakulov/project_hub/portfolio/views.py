@@ -1,9 +1,64 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
 from django.contrib.auth.models import User
-from .models import Fuel, Review
-from .forms import ReviewForm
+from .models import Review, Fuel, CartItem
+from .forms import ReviewForm, SearchForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import JsonResponse
+
+
+from django.utils.crypto import get_random_string
+
+from django.utils.text import slugify
+from django.utils.crypto import get_random_string
+
+def generate_unique_slug(instance, new_slug=None):
+    if new_slug is not None:
+        slug = new_slug
+    else:
+        slug = slugify(instance.name)
+
+    queryset = Fuel.objects.filter(slug=slug).exclude(id=instance.id)
+    if queryset.exists():
+        new_slug = f"{slug}-{get_random_string(length=4)}"
+        return generate_unique_slug(instance, new_slug=new_slug)
+    return slug
+
+def get_cart(request):
+    cart_items = CartItem.objects.filter(user=request.user)
+    cart_data = {'cart': {}}
+
+    for item in cart_items:
+        cart_data['cart'][item.id] = {
+            'name': item.fuel.name,
+            'price': float(item.fuel.price),
+            'photo_url': item.fuel.photo_url.url if item.fuel.photo_url else None,
+        }
+
+    return JsonResponse(cart_data)
+
+def add_to_cart(request, slug):
+    fuel = get_object_or_404(Fuel, slug=slug)
+    cart_item, created = CartItem.objects.get_or_create(user=request.user, fuel=fuel)
+
+    if created:
+        return JsonResponse({'message': 'Товар успешно добавлен в корзину.'})
+    else:
+        return JsonResponse({'message': 'Товар уже находится в корзине.'})
+
+# Остальные представления остаются без изменений
+
+
+
+def fuel_detail(request, slug):
+    fuel = get_object_or_404(Fuel, slug=slug)
+    return render(request, 'fuel_detail.html', {'fuel': fuel})
+
+
+def error_404(request, exception):
+    return render(request, 'pf_404.html', status=404)
 
 # Project Hub
 def home(request):
@@ -48,23 +103,33 @@ def pf_home(request):
 
     return render(request, 'pf_home.html', {'fuels': fuels, 'reviews': reviews, 'form': form})
 
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+def search_suggestions(request):
+    query = request.GET.get('query')
+    if query:
+        fuels = Fuel.objects.filter(name__icontains=query)[:5]  # Получить первые 5 объектов Fuel, содержащих введенный запрос
+        suggestions = [fuel.name for fuel in fuels]  # Получить список предложенных запросов
+        return JsonResponse({'suggestions': suggestions})
+    else:
+        return JsonResponse({'suggestions': []})
 
 def pf_catalog(request):
     fuels_list = Fuel.objects.all()
-    paginator = Paginator(fuels_list, 12)  # Показывать 12 товаров на странице
+    query = request.GET.get('search')
+    if query:
+        fuels_list = fuels_list.filter(name__icontains=query)
+
+    paginator = Paginator(fuels_list, 12)
 
     page = request.GET.get('page')
     try:
         fuels = paginator.page(page)
     except PageNotAnInteger:
-        # Если страница не является целым числом, отображаем первую страницу
         fuels = paginator.page(1)
     except EmptyPage:
-        # Если страница выходит за пределы доступных (например, 9999), отображаем последнюю страницу результатов
         fuels = paginator.page(paginator.num_pages)
 
-    reviews = Review.objects.all()[:3]  # Получение только трех отзывов
+    reviews = Review.objects.all()[:3]
     form = ReviewForm()
 
     if request.method == 'POST':
@@ -73,12 +138,11 @@ def pf_catalog(request):
             form.save()
             return redirect('pf-home')
 
-    return render(request, 'pf_catalog.html', {'fuels': fuels, 'reviews': reviews, 'form': form})
+    return render(request, 'pf_catalog.html', {'fuels': fuels, 'reviews': reviews, 'form': form, 'search_form': SearchForm()})
 
 
-def fuel_detail(request, fuel_id):
-    fuel = get_object_or_404(Fuel, pk=fuel_id)
-    return render(request, 'fuel_detail.html', {'fuel': fuel})
+
+
 
 
 def pf_registration(request):

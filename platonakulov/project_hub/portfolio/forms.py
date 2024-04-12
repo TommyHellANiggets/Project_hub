@@ -1,6 +1,8 @@
 from .models import Fuel, Review
 from django import forms
-from .models import Review
+
+class SearchForm(forms.Form):
+    query = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Искать на Power Fuel…'}))
 
 class ReviewForm(forms.ModelForm):
     class Meta:

@@ -14,18 +14,35 @@
     <link href="{% static 'pf_style.css' %}" rel="stylesheet">
 </head>
 <body>
+<div class="overlay"></div>
+<div class="cart" id="cart">
+    <div class="cart-content">
+        <h2>Корзина</h2>
+        <!-- Здесь будет контент корзины -->
+        <div class="close-btn" onclick="closeCart()">Закрыть</div>
+    </div>
+</div>
 
 <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
     <div class="naver d-flex">
         <!-- Лого и название -->
-        <a class="navbar-brand" href="{% url 'pf-home' %}">
-            <h3 style="font-weight: 600; font-size: 24px; letter-spacing: 1px; margin-top: -10px;">Power Fuel</h3>
-            <p style="font-weight: 400; font-size: 14px; letter-spacing: 3px; margin-top: -15px; margin-bottom: -5px; color: lightgray;">- be the best</p>
+        <a class="navbar-brand" href="{% url 'admin:index' %}">
+            <h3 style="font-weight: 600; font-size: 28px; letter-spacing: 1px; margin-top: -10px;">Power Fuel</h3>
+            <p class="text-center" style="font-weight: 400; font-size: 18px; letter-spacing: 3px; margin-top: -15px; margin-bottom: -5px; color: lightgray;">- be the best</p>
         </a>
-        <div class="search-container">
-            <input type="text" id="inputField" class="search-input" placeholder="Искать на Power Fuel…" oninput="toggleClearButton()">
+        <!-- HTML код -->
+        <form action="{% url 'pf-catalog' %}" method="get" class="search-container">
+            <input type="text" id="inputField" name="search" class="search-input" placeholder="Искать на Power Fuel…" oninput="handleInput(event)">
             <span class="clear-icon" onclick="clearInputField()">&times;</span>
+        </form>
+
+        <!-- Контейнер для отображения предложений -->
+        <div id="suggestions-container" class="suggestions-container">
+            <ul id="suggestions-list" class="suggestions-list">
+                <!-- Список запросов будет здесь -->
+            </ul>
         </div>
+
         <!-- Кнопка для мобильных устройств (если нужно) -->
         <button class="navbar-toggler" style="margin-left: 10px; background-color: #ffffff;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,27 +52,23 @@
                 <!-- Главная -->
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'pf-home' %}">
-                        <i class="bi bi-house biba"></i>
                         <p class="nav-text">Главная</p>
                     </a>
                 </li>
                 <!-- Каталог -->
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'pf-catalog' %}">
-                        <i class="bi bi-journal-text biba"></i>
                         <p class="nav-text">Каталог</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#about">
-                        <i class="bi bi-book biba"></i>
-                        <p class="nav-text">О Нас</p>
+                    <a class="nav-link" href="#" onclick="openCart()">
+                        <p class="nav-text">Корзина</p>
                     </a>
                 </li>
                 <!-- Профиль -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-text" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person biba" style="margin-top: -20px; padding-left: 8px;"></i>
                         {% block profile_link %}
                             {% if user.is_authenticated %}
                                 Профиль
@@ -71,7 +84,7 @@
                                 <li><a class="dropdown-item" href="{% url 'pf-profile' %}">Личный кабинет</a></li>
                                 <div class="dropdown-divider"></div> <!-- Горизонтальная линия -->
                                 <!-- Корзина -->
-                                <li><a class="dropdown-item" href="{% url 'pf-cart' %}">Корзина</a></li>
+                                <li></li>
                             {% else %}
                                 <!-- Войти -->
                                 <li><a class="dropdown-item" href="{% url 'pf-authorisation' %}">Войти</a></li>
@@ -95,7 +108,7 @@
         Вернуться в хаб
     </a>
     <button onclick="scrollToTop()" id="scrollBtn" title="Вверх" class='scrollbut'><i class="bi bi-arrow-up-short" style="font-size: 30px"></i></button>
-    <div class="container con-bg pb-3">
+    <div class="container con-bg py-1">
         {% block content %}
         {% endblock %}
     </div>
@@ -119,31 +132,129 @@
         <div class="footer-policy">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
-            <!-- Другие ссылки на политику и т.д. -->
         </div>
         <div class="footer-info">
             <p>&copy; 2023-2024 Power Fuel</p>
         </div>
     </div>
 </footer>
-
 <script>
-    window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("scrollBtn").style.display = "block";
-    } else {
-        document.getElementById("scrollBtn").style.display = "none";
+    function openCart() {
+        var cart = document.getElementById("cart");
+        var overlay = document.querySelector(".overlay");
+        if (cart && overlay) {
+            cart.classList.add("opened");
+            overlay.classList.add("active");
+        } else {
+            console.error("Element with id 'cart' or overlay not found");
+        }
     }
-}
 
-function scrollToTop() {
-    document.body.scrollTop = 0; // Для Safari
-    document.documentElement.scrollTop = 0; // Для Chrome, Firefox, IE и Opera
-}
+    function closeCart() {
+        var cart = document.getElementById("cart");
+        var overlay = document.querySelector(".overlay");
+        if (cart && overlay) {
+            cart.classList.remove("opened");
+            overlay.classList.remove("active");
+        } else {
+            console.error("Element with id 'cart' or overlay not found");
+        }
+    }
+
 </script>
-<!-- Подключение Bootstrap JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.querySelectorAll('.btn-cart').forEach(btn => {
+        btn.addEventListener('click', function(event) {
+            event.preventDefault(); // Отменяем стандартное действие кнопки
+
+            const form = this.closest('form'); // Находим ближайшую форму
+            const formData = new FormData(form); // Создаем объект FormData для данных формы
+
+            fetch(form.action, { // Отправляем POST-запрос на сервер
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}', // Передаем CSRF-токен
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Обновляем содержимое корзины на странице
+                    updateCartContent();
+                    alert('Товар добавлен в корзину!');
+                } else {
+                    alert('Ошибка при добавлении товара в корзину.');
+                }
+            }).catch(error => {
+                console.error('Ошибка:', error);
+            });
+        });
+    });
+
+    function updateCartContent() {
+        // Получаем контейнер корзины
+        const cart = document.getElementById('cart');
+
+        // Очищаем содержимое корзины
+        cart.innerHTML = '';
+
+        // Добавляем заголовок и кнопку закрытия
+        const cartContent = document.createElement('div');
+        cartContent.classList.add('cart-content');
+        const cartTitle = document.createElement('h2');
+        cartTitle.textContent = 'Корзина';
+        const closeBtn = document.createElement('div');
+        closeBtn.classList.add('close-btn');
+        closeBtn.textContent = 'Закрыть';
+        closeBtn.addEventListener('click', closeCart);
+        cartContent.appendChild(cartTitle);
+        cartContent.appendChild(closeBtn);
+        cart.appendChild(cartContent);
+
+        // Получаем данные о корзине из сессии
+        fetch('/get-cart/')  // Предполагается, что есть URL для получения содержимого корзины
+            .then(response => response.json())
+            .then(data => {
+                // Если корзина не пуста, добавляем содержимое
+                if (Object.keys(data.cart).length > 0) {
+                    for (const [slug, item] of Object.entries(data.cart)) {
+                        const cartItemHTML = `
+                            <div class="cart-item">
+                                <img src="${item.photo_url}" alt="${item.name}">
+                                <p>${item.name}</p>
+                                <p>${item.price} ₽</p>
+                            </div>`;
+                        cartContent.innerHTML += cartItemHTML;
+                    }
+                } else {
+                    // Если корзина пуста, добавляем соответствующее сообщение
+                    const emptyCartMsg = document.createElement('p');
+                    emptyCartMsg.textContent = 'Корзина пуста.';
+                    cartContent.appendChild(emptyCartMsg);
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка получения содержимого корзины:', error);
+            });
+    }
+
+    function closeCart() {
+        // Скрытие корзины при закрытии
+        const cart = document.getElementById('cart');
+        cart.style.display = 'none';
+
+        // Скрытие затемнения экрана
+        const overlay = document.querySelector('.overlay');
+        overlay.style.display = 'none';
+    }
+</script>
+
+
+
+
+
+<script src="{% static 'js/search_scripts.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

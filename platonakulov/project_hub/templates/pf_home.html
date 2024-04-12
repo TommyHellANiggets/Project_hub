@@ -43,10 +43,10 @@
         </div>
         </div>
     </div>
-    <p class="zaglav" id="catalog" style="background-color: var(--color-gray); border-radius: 10px; user-select: none;">- Каталог -</p>
+    <p class="zaglav" id="catalog" style="background-color: var(--color-gray);">- Каталог -</p>
     <div class="cards-container" id="cardsContainer">
         {% for fuel in fuels %}
-        <a href="">
+        <a href="{% url 'fuel-detail' slug=fuel.slug %}">
             <div class="card-item">
                 <div class="card-image-item">
                     <img src="{{ fuel.photo_url }}" alt="{{ fuel.name }}">
@@ -62,7 +62,7 @@
     </div>
     
     <div class="container con-bg mt-3">
-        <p class="zaglav" id="about" style="background-color: var(--color-gray); border-radius: 10px">- Отзывы -</p>
+        <p class="zaglav" id="about" style="background-color: var(--color-gray);">- Отзывы -</p>
         <div class="row">
             {% for review in reviews %}
             <div class="col-md-4 review">
