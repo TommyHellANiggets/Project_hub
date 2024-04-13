@@ -18,6 +18,8 @@ urlpatterns = [
     path('eg-home/', views.eg_home, name='eg-home'),
     path('foa-home/', views.foa_home, name='foa-home'),
     path('foa-en-home/', views.foa_en_home, name='foa-en-home'),
+    path('get-fuel-url/', views.get_fuel_url, name='get_fuel_url'),
+
 ]
 
 handler404 = 'portfolio.views.error_404'

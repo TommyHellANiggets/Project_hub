@@ -7,12 +7,18 @@ from .forms import ReviewForm, SearchForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
-
-
-from django.utils.crypto import get_random_string
-
 from django.utils.text import slugify
 from django.utils.crypto import get_random_string
+from django.shortcuts import render
+from django.http import HttpResponseNotFound
+
+def fuel_detail(request, slug):
+    try:
+        fuel = Fuel.objects.get(slug=slug)
+        return render(request, 'fuel_detail.html', {'fuel': fuel})
+    except Fuel.DoesNotExist:
+        return HttpResponseNotFound("Fuel not found")
+
 
 def generate_unique_slug(instance, new_slug=None):
     if new_slug is not None:
@@ -50,6 +56,10 @@ def add_to_cart(request, slug):
 
 # Остальные представления остаются без изменений
 
+def get_fuel_url(request):
+    fuel_name = request.GET.get('fuel_name')
+    fuel = get_object_or_404(Fuel, name=fuel_name)
+    return JsonResponse({'url': fuel.slug})
 
 
 def fuel_detail(request, slug):
@@ -204,4 +214,6 @@ def foa_home(request):
 
 def foa_en_home(request):
     return render(request, 'foa_en_home.html')
+
+
 

@@ -10,9 +10,11 @@
     <form action="{% url 'add-to-cart' slug=fuel.slug %}" method="post">
         {% csrf_token %}
         <div class="card-item">
-            <div class="card-image-item">
-                <img src="{{ fuel.photo_url }}" alt="{{ fuel.name }}">
-            </div>
+            <a href="{% url 'fuel-detail' slug=fuel.slug %}">
+                <div class="card-image-item">
+                    <img src="{{ fuel.photo_url }}" alt="{{ fuel.name }}">
+                </div>
+            </a>
             <div class="card-details">
                 <p class="card-price">{{ fuel.price|floatformat:0 }} ₽</p>
                 <p class="card-title">{{ fuel.name }}</p>

@@ -3,11 +3,11 @@
     --color-gray2: #2B2D42;
     --con: rgb(248, 248, 248);
     --color-gray: #ededed;
-    --color-white: #f4f4f9;
-    --color-card: #0e79bb;
+    --color-white: #FCFFF7;
+    --color-card: #FF6933;
     --color-find: #5a64ec;
     --color-realgray: #333;
-    --color-nav: #5FA8D3;
+    --color-nav: #E53D00;
 }
 
 #scrollBtn {
@@ -152,12 +152,16 @@ body {
     color: #555;
 }
 
+.search-container {
+    margin: 0 auto;
+}
+
 #inputField {
     margin: auto 20px !important;
     max-width: 500px;
     width: 50vw;
     height: 50px;
-    margin: auto 0 ;
+    margin: auto 0 !important;
     font-size: 12px;
     border-radius: 10px;
     border-style: none;
